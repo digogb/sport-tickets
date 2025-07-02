@@ -1,0 +1,342 @@
+// homepage.component.scss
+.homepage-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+// Hero Section
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="20" cy="80" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="2" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="3" fill="white" opacity="0.1"/></svg>') repeat;
+    opacity: 0.1;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    font-weight: 300;
+  }
+}
+
+// Search Container
+.search-container {
+  display: flex;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  align-items: stretch;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .search-field {
+    flex: 1;
+    
+    ::ng-deep {
+      .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: rgba(255, 255, 255, 0.3);
+      }
+      
+      .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+        color: white;
+      }
+      
+      .mat-input-element {
+        color: white;
+        
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.7);
+        }
+      }
+      
+      .mat-form-field-label {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      
+      .mat-icon {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+
+  .search-button {
+    padding: 0 2rem;
+    height: 56px;
+    font-size: 1rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  }
+}
+
+// Sections
+.categories-section,
+.featured-events {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    font-weight: 300;
+  }
+}
+
+// Categories Grid
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.category-card {
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  mat-card-content {
+    padding: 2rem 1rem;
+  }
+
+  .category-icon {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+}
+
+// Events Grid
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.event-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .event-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    .event-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(102, 126, 234, 0.9);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+    }
+  }
+
+  mat-card-content {
+    padding: 1.5rem;
+  }
+
+  .event-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #343a40;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .event-details {
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: #6c757d;
+      font-size: 0.9rem;
+
+      mat-icon {
+        font-size: 1.1rem;
+        width: 1.1rem;
+        height: 1.1rem;
+        color: #667eea;
+      }
+
+      &.price {
+        color: #28a745;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  mat-card-actions {
+    padding: 0 1.5rem 1.5rem;
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+    }
+  }
+}
+
+// Athlete CTA
+.athlete-cta {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .cta-card {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+
+    mat-card-content {
+      padding: 3rem;
+    }
+  }
+
+  .cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .cta-text {
+    h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+  }
+
+  .cta-action {
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      mat-icon {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

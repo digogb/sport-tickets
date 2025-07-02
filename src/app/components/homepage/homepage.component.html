@@ -1,0 +1,120 @@
+<!-- homepage.component.html -->
+<div class="homepage-container">
+  <!-- Header com busca -->
+  <header class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Encontre os melhores eventos esportivos
+      </h1>
+      <p class="hero-subtitle">
+        Ingressos para competições, torneios e atividades esportivas em sua região
+      </p>
+      
+      <!-- Barra de busca -->
+      <div class="search-container">
+        <mat-form-field class="search-field" appearance="outline">
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput 
+                 placeholder="Buscar eventos, esportes ou locais..." 
+                 #searchInput
+                 (keyup.enter)="searchEvents(searchInput.value)">
+        </mat-form-field>
+        <button mat-raised-button 
+                color="primary" 
+                class="search-button"
+                (click)="searchEvents(searchInput.value)">
+          Buscar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Categorias de esportes -->
+  <section class="categories-section">
+    <div class="section-header">
+      <h2>Esportes em destaque</h2>
+      <p>Encontre eventos por modalidade esportiva</p>
+    </div>
+    
+    <div class="categories-grid">
+      <mat-card class="category-card" 
+                *ngFor="let category of sportsCategories"
+                (click)="navigateToCategory(category.name)">
+        <mat-card-content>
+          <mat-icon class="category-icon">{{category.icon}}</mat-icon>
+          <h3>{{category.name}}</h3>
+          <p>{{category.count}} eventos</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- Eventos em destaque -->
+  <section class="featured-events">
+    <div class="section-header">
+      <h2>Eventos em destaque</h2>
+      <p>Não perca os próximos grandes eventos esportivos</p>
+    </div>
+    
+    <div class="events-grid">
+      <mat-card class="event-card" 
+                *ngFor="let event of featuredEvents"
+                (click)="viewEventDetails(event.id)">
+        <div class="event-image">
+          <img [src]="event.image" [alt]="event.title" />
+          <div class="event-badge">{{event.sport}}</div>
+        </div>
+        
+        <mat-card-content>
+          <h3 class="event-title">{{event.title}}</h3>
+          
+          <div class="event-details">
+            <div class="detail-item">
+              <mat-icon>event</mat-icon>
+              <span>{{event.date | date:'dd/MM/yyyy'}}</span>
+            </div>
+            
+            <div class="detail-item">
+              <mat-icon>location_on</mat-icon>
+              <span>{{event.location}}</span>
+            </div>
+            
+            <div class="detail-item price">
+              <mat-icon>local_offer</mat-icon>
+              <span>{{event.price}}</span>
+            </div>
+          </div>
+        </mat-card-content>
+        
+        <mat-card-actions>
+          <button mat-raised-button color="primary">
+            Ver detalhes
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- CTA para atletas -->
+  <section class="athlete-cta">
+    <mat-card class="cta-card">
+      <mat-card-content>
+        <div class="cta-content">
+          <div class="cta-text">
+            <h2>Você é um atleta?</h2>
+            <p>Cadastre-se em nossa plataforma e participe de eventos esportivos incríveis!</p>
+          </div>
+          <div class="cta-action">
+            <button mat-raised-button 
+                    color="accent" 
+                    size="large"
+                    (click)="navigateToAthleteRegistration()">
+              <mat-icon>person_add</mat-icon>
+              Cadastrar Atleta
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>
