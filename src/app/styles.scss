@@ -1,0 +1,286 @@
+// styles.scss (Global Styles)
+@import '~@angular/material/theming';
+
+// Definir tema personalizado
+$custom-primary: mat-palette($mat-indigo, 500, 300, 700);
+$custom-accent: mat-palette($mat-green, A200, A100, A400);
+$custom-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme((
+  color: (
+    primary: $custom-primary,
+    accent: $custom-accent,
+    warn: $custom-warn,
+  )
+));
+
+@include mat-core();
+@include mat-all-component-themes($custom-theme);
+
+// Reset e estilos globais
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+  line-height: 1.6;
+}
+
+// Tipografia
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+// Links
+a {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #5a6fd8;
+  }
+}
+
+// Botões customizados
+.mat-raised-button.mat-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background: #e9ecef;
+    color: #6c757d;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+.mat-raised-button.mat-accent {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+// Cards customizados
+.mat-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Form fields customizados
+.mat-form-field-appearance-outline {
+  .mat-form-field-outline {
+    color: #dee2e6;
+  }
+
+  &.mat-focused .mat-form-field-outline-thick {
+    color: #667eea;
+  }
+
+  .mat-form-field-label {
+    color: #6c757d;
+  }
+
+  &.mat-focused .mat-form-field-label {
+    color: #667eea;
+  }
+}
+
+// Snackbar customizado
+.mat-snack-bar-container {
+  border-radius: 8px;
+  
+  &.success-snackbar {
+    background: #28a745;
+    color: white;
+  }
+
+  &.error-snackbar {
+    background: #dc3545;
+    color: white;
+  }
+
+  &.info-snackbar {
+    background: #17a2b8;
+    color: white;
+  }
+
+  &.warning-snackbar {
+    background: #ffc107;
+    color: #212529;
+  }
+}
+
+// Utilitários
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+.p-5 { padding: 3rem; }
+
+// Responsivo
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Animações personalizadas
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+// Scrollbar personalizada
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+// Classes de loading
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+// Estados de erro
+.error-state {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+
+  mat-icon {
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
+    color: #dc3545;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: #343a40;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+}
+
+// Estados vazios
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #6c757d;
+
+  mat-icon {
+    font-size: 5rem;
+    width: 5rem;
+    height: 5rem;
+    color: #adb5bd;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: #495057;
+    margin-bottom: 0.5rem;
+  }
+}

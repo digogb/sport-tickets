@@ -1,0 +1,105 @@
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Logo e descrição -->
+    <div class="footer-section">
+      <div class="footer-logo">
+        <mat-icon class="logo-icon">sports</mat-icon>
+        <h3>SportTickets</h3>
+      </div>
+      <p class="footer-description">
+        A melhor plataforma para encontrar e comprar ingressos para eventos esportivos. 
+        Conectando atletas, organizadores e fãs do esporte.
+      </p>
+      <div class="social-links">
+        <button mat-icon-button class="social-button">
+          <mat-icon>facebook</mat-icon>
+        </button>
+        <button mat-icon-button class="social-button">
+          <mat-icon>sports_soccer</mat-icon>
+        </button>
+        <button mat-icon-button class="social-button">
+          <mat-icon>share</mat-icon>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Links rápidos -->
+    <div class="footer-section">
+      <h4>Links Rápidos</h4>
+      <ul class="footer-links">
+        <li><a routerLink="/">Início</a></li>
+        <li><a routerLink="/events">Todos os Eventos</a></li>
+        <li><a routerLink="/athlete-registration">Cadastro de Atleta</a></li>
+        <li><a routerLink="/organizer-registration">Cadastro de Organizador</a></li>
+        <li><a routerLink="/about">Sobre Nós</a></li>
+      </ul>
+    </div>
+    
+    <!-- Esportes -->
+    <div class="footer-section">
+      <h4>Esportes</h4>
+      <ul class="footer-links">
+        <li><a routerLink="/events" [queryParams]="{category: 'Futebol'}">Futebol</a></li>
+        <li><a routerLink="/events" [queryParams]="{category: 'Basquete'}">Basquete</a></li>
+        <li><a routerLink="/events" [queryParams]="{category: 'Vôlei'}">Vôlei</a></li>
+        <li><a routerLink="/events" [queryParams]="{category: 'Corrida'}">Corrida</a></li>
+        <li><a routerLink="/events" [queryParams]="{category: 'Natação'}">Natação</a></li>
+        <li><a routerLink="/events" [queryParams]="{category: 'Tênis'}">Tênis</a></li>
+      </ul>
+    </div>
+    
+    <!-- Suporte -->
+    <div class="footer-section">
+      <h4>Suporte</h4>
+      <ul class="footer-links">
+        <li><a routerLink="/help">Central de Ajuda</a></li>
+        <li><a routerLink="/contact">Fale Conosco</a></li>
+        <li><a routerLink="/terms">Termos de Uso</a></li>
+        <li><a routerLink="/privacy">Política de Privacidade</a></li>
+        <li><a routerLink="/refund">Política de Reembolso</a></li>
+      </ul>
+    </div>
+    
+    <!-- Contato -->
+    <div class="footer-section">
+      <h4>Contato</h4>
+      <div class="contact-info">
+        <div class="contact-item">
+          <mat-icon>email</mat-icon>
+          <span>{{ 'contato@sporttickets.com' }}</span>
+        </div>
+        <div class="contact-item">
+          <mat-icon>phone</mat-icon>
+          <span>(85) 3333-4444</span>
+        </div>
+        <div class="contact-item">
+          <mat-icon>location_on</mat-icon>
+          <span>Fortaleza, CE - Brasil</span>
+        </div>
+      </div>
+      
+      <!-- Newsletter -->
+      <div class="newsletter">
+        <h5>Newsletter</h5>
+        <mat-form-field appearance="outline" class="newsletter-field">
+          <input matInput placeholder="Seu email" type="email">
+          <button mat-icon-button matSuffix>
+            <mat-icon>send</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-content">
+      <p>&copy; {{ currentYear }} SportTickets. Todos os direitos reservados.</p>
+      <div class="footer-badges">
+        <span class="badge">Seguro</span>
+        <span class="badge">Confiável</span>
+        <span class="badge">24/7</span>
+      </div>
+    </div>
+  </div>
+</footer>

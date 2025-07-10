@@ -1,0 +1,184 @@
+<!-- athlete-registration.component.html -->
+<div class="registration-container">
+  <!-- Header -->
+  <div class="registration-header">
+    <button mat-icon-button (click)="goBack()" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="header-content">
+      <h1>Cadastro de Atleta</h1>
+      <p>Junte-se à nossa comunidade esportiva</p>
+    </div>
+  </div>
+
+  <!-- Formulário -->
+  <div class="form-container">
+    <mat-card class="registration-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar class="avatar-icon">person_add</mat-icon>
+        <mat-card-title>Informações do Atleta</mat-card-title>
+        <mat-card-subtitle>Preencha seus dados para se cadastrar</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
+          
+          <!-- Foto de perfil -->
+          <div class="profile-image-section">
+            <div class="image-preview">
+              <img [src]="registrationForm.get('profileImage')?.value || defaultAvatarUrl" 
+                   alt="Foto de perfil" class="preview-image">
+              <div class="image-overlay">
+                <mat-icon>camera_alt</mat-icon>
+              </div>
+            </div>
+            <input type="file" 
+                   (change)="onFileSelected($event)" 
+                   accept="image/*" 
+                   class="file-input" 
+                   #fileInput>
+            <button type="button" 
+                    mat-stroked-button 
+                    (click)="fileInput.click()" 
+                    class="upload-button">
+              <mat-icon>upload</mat-icon>
+              Escolher foto
+            </button>
+          </div>
+
+          <!-- Informações básicas -->
+          <div class="form-section">
+            <h3 class="section-title">Informações Básicas</h3>
+            
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Nome completo</mat-label>
+                <input matInput 
+                       formControlName="name" 
+                       placeholder="Digite seu nome completo">
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>{{ getErrorMessage('name') }}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Email</mat-label>
+                <input matInput 
+                       type="email" 
+                       formControlName="email" 
+                       placeholder="seu@email.com">
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error>{{ getErrorMessage('email') }}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Telefone</mat-label>
+                <input matInput 
+                       formControlName="phone" 
+                       placeholder="(85) 99999-9999"
+                       (input)="formatPhoneNumber($event)">
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error>{{ getErrorMessage('phone') }}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Data de nascimento</mat-label>
+                <input matInput 
+                       [matDatepicker]="picker" 
+                       formControlName="birthDate"
+                       [max]="maxDate">
+                <mat-hint>MM/DD/AAAA</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error>{{ getErrorMessage('birthDate') }}</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Informações esportivas -->
+          <div class="form-section">
+            <h3 class="section-title">Informações Esportivas</h3>
+            
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Esporte principal</mat-label>
+                <mat-select formControlName="sport">
+                  <mat-option *ngFor="let sport of sports" [value]="sport">
+                    {{ sport }}
+                  </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>sports</mat-icon>
+                <mat-error>{{ getErrorMessage('sport') }}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Categoria</mat-label>
+                <mat-select formControlName="category">
+                  <mat-option *ngFor="let category of categories" [value]="category">
+                    {{ category }}
+                  </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>category</mat-icon>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Biografia (opcional)</mat-label>
+                <textarea matInput 
+                          formControlName="bio" 
+                          rows="4" 
+                          placeholder="Conte um pouco sobre sua trajetória esportiva..."></textarea>
+                <mat-hint align="end">{{ registrationForm.get('bio')?.value?.length || 0 }}/500</mat-hint>
+                <mat-error>{{ getErrorMessage('bio') }}</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Botões de ação -->
+          <div class="form-actions">
+            <button type="button" 
+                    mat-stroked-button 
+                    class="cancel-button"
+                    (click)="goBack()">
+              Cancelar
+            </button>
+            
+            <button type="submit" 
+                    mat-raised-button 
+                    color="primary" 
+                    class="submit-button"
+                    [disabled]="registrationForm.invalid || isLoading">
+              <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
+              <span *ngIf="!isLoading">Cadastrar Atleta</span>
+              <span *ngIf="isLoading">Cadastrando...</span>
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Informações adicionais -->
+  <div class="info-section">
+    <mat-card class="info-card">
+      <mat-card-content>
+        <div class="info-content">
+          <mat-icon class="info-icon">info</mat-icon>
+          <div>
+            <h4>Por que se cadastrar?</h4>
+            <ul>
+              <li>Acesso a eventos esportivos exclusivos</li>
+              <li>Networking com outros atletas</li>
+              <li>Oportunidades de patrocínio</li>
+              <li>Acompanhamento de performance</li>
+            </ul>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

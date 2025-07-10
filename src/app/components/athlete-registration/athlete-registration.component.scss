@@ -1,0 +1,339 @@
+// athlete-registration.component.scss
+.registration-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 2rem 1rem;
+}
+
+// Header
+.registration-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+
+  .back-button {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    mat-icon {
+      color: #667eea;
+    }
+  }
+
+  .header-content {
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #343a40;
+      margin: 0;
+      line-height: 1.2;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      color: #6c757d;
+      font-size: 1.1rem;
+      margin: 0.5rem 0 0;
+      font-weight: 300;
+    }
+  }
+}
+
+// Form Container
+.form-container {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.registration-card {
+  border: none;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+
+  mat-card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+
+    .avatar-icon {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 2rem;
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    mat-card-title {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    mat-card-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+    }
+  }
+
+  mat-card-content {
+    padding: 2rem;
+  }
+}
+
+// Profile Image Section
+.profile-image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+
+  .image-preview {
+    position: relative;
+    cursor: pointer;
+
+    .preview-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      mat-icon {
+        color: white;
+        font-size: 2rem;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &:hover .image-overlay {
+      opacity: 1;
+    }
+  }
+
+  .file-input {
+    display: none;
+  }
+
+  .upload-button {
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+
+    mat-icon {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+// Form Sections
+.form-section {
+  margin-bottom: 2rem;
+
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #343a40;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+  }
+}
+
+.registration-form {
+  .form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    .half-width {
+      flex: 1;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+
+  // Material Form Field Customization
+  ::ng-deep {
+    .mat-form-field-appearance-outline {
+      .mat-form-field-outline {
+        color: #dee2e6;
+      }
+
+      &.mat-focused .mat-form-field-outline-thick {
+        color: #667eea;
+      }
+
+      .mat-form-field-label {
+        color: #6c757d;
+      }
+
+      &.mat-focused .mat-form-field-label {
+        color: #667eea;
+      }
+
+      .mat-form-field-suffix mat-icon {
+        color: #6c757d;
+      }
+    }
+
+    .mat-select-arrow {
+      color: #6c757d;
+    }
+
+    .mat-datepicker-toggle {
+      color: #6c757d;
+    }
+  }
+}
+
+// Form Actions
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e9ecef;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .cancel-button {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    border-color: #6c757d;
+    color: #6c757d;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  .submit-button {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    position: relative;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    mat-spinner {
+      margin-right: 0.5rem;
+    }
+
+    &:disabled {
+      background-color: #e9ecef;
+      color: #6c757d;
+    }
+  }
+}
+
+// Info Section
+.info-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.info-card {
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+
+  mat-card-content {
+    padding: 2rem;
+  }
+
+  .info-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .info-icon {
+      font-size: 2rem;
+      width: 2rem;
+      height: 2rem;
+      opacity: 0.8;
+    }
+
+    h4 {
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.5rem;
+      
+      li {
+        margin-bottom: 0.5rem;
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+// Global Snackbar Styles
+::ng-deep {
+  .success-snackbar {
+    background: #28a745;
+    color: white;
+  }
+
+  .error-snackbar {
+    background: #dc3545;
+    color: white;
+  }
+}
+
+// Loading State
+.mat-spinner {
+  ::ng-deep circle {
+    stroke: white;
+  }
+}
